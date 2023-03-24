@@ -4,9 +4,9 @@ var Analytics = require('@segment/analytics.js-core').constructor;
 var integration = require('@segment/analytics.js-integration');
 var sandbox = require('@segment/clear-env');
 var tester = require('@segment/analytics.js-integration-tester');
-var PrimeDataVN = require('../lib/');
+var CleverTap = require('../lib/');
 
-describe('<PrimeDataVN>', function() {
+describe('<CleverTap>', function() {
   var analytics;
   var clevertap;
   var options;
@@ -17,8 +17,8 @@ describe('<PrimeDataVN>', function() {
       region: ''
     };
     analytics = new Analytics();
-    clevertap = new PrimeDataVN(options);
-    analytics.use(PrimeDataVN);
+    clevertap = new CleverTap(options);
+    analytics.use(CleverTap);
     analytics.use(tester);
     analytics.add(clevertap);
   });
@@ -32,8 +32,8 @@ describe('<PrimeDataVN>', function() {
 
   it('should have the correct options', function() {
     analytics.compare(
-      PrimeDataVN,
-      integration('PrimeDataVN')
+      CleverTap,
+      integration('CleverTap')
         .global('clevertap')
         .option('clevertap_account_id', '')
         .option('region', '')
